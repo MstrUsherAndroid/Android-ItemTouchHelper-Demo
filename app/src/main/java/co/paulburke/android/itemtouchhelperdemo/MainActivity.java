@@ -17,14 +17,13 @@
 package co.paulburke.android.itemtouchhelperdemo;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class MainActivity extends ActionBarActivity implements MainFragment.OnListItemClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +33,13 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnLi
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         if (savedInstanceState == null) {
-            MainFragment fragment = new MainFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content, fragment)
+                    .replace(R.id.content, new RecyclerListFragment())
+                    .addToBackStack(null)
                     .commit();
         }
+
     }
 
-    @Override
-    public void onListItemClick(int position) {
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                fragment = new RecyclerListFragment();
-                break;
-
-            case 1:
-                fragment = new RecyclerGridFragment();
-                break;
-        }
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content, fragment)
-                .addToBackStack(null)
-                .commit();
-    }
 
 }

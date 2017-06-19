@@ -26,15 +26,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import co.paulburke.android.itemtouchhelperdemo.helper.OnStartDragListener;
 import co.paulburke.android.itemtouchhelperdemo.helper.SimpleItemTouchHelperCallback;
 
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class RecyclerListFragment extends Fragment implements OnStartDragListener {
-
-    private ItemTouchHelper mItemTouchHelper;
+public class RecyclerListFragment extends Fragment {
 
     public RecyclerListFragment() {
     }
@@ -45,11 +42,12 @@ public class RecyclerListFragment extends Fragment implements OnStartDragListene
         return new RecyclerView(container.getContext());
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerListAdapter adapter = new RecyclerListAdapter(getActivity(), this);
+        RecyclerListAdapter adapter = new RecyclerListAdapter(getActivity());
 
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setHasFixedSize(true);
@@ -57,12 +55,8 @@ public class RecyclerListFragment extends Fragment implements OnStartDragListene
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
-        mItemTouchHelper = new ItemTouchHelper(callback);
+        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);
-    }
 
-    @Override
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startDrag(viewHolder);
     }
 }

@@ -16,5 +16,6 @@
 <resources>
 
     <integer name="grid_columns">2</integer>
+    <item name="item_click_support" type="id" />
 
 </resources>
