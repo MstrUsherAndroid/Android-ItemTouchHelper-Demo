@@ -56,3 +56,5 @@ com_crashlytics_export_strings.xml
 /captures
 
 infer-out/
+gradlew
+gradlew.bat
