@@ -17,7 +17,6 @@
 package co.paulburke.android.itemtouchhelperdemo;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,10 +87,6 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
             handleView = (ImageView) itemView.findViewById(R.id.handle);
         }
 
-        @Override
-        public void onItemSelected() {
-            itemView.setBackgroundColor(Color.LTGRAY);
-        }
 
         @Override
         public void onItemClear() {
